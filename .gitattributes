@@ -1,0 +1,4 @@
+# 统一使用 LF 行尾，避免 Linux 构建机上 make/脚本因 \r 报错
+* text=auto eol=lf
+*.png binary
+*.deb binary

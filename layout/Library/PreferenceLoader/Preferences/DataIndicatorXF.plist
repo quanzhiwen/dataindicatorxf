@@ -3,12 +3,14 @@
 	entry = {
 		bundle = "DataIndicatorXFPrefs";
 		cell = {
-			detail = "DataIndicatorXFPrefs";
+			detail = "RootController";
 			title = "DataIndicatorXF";
 		};
 		defaults = "cn.xiumaos.ios";
 	};
 	preferenceLoaderVersion = 2;
 	operation = insert;
+	position = end;
 	section = "General";
+	isRelevant = "return YES;";
 }
