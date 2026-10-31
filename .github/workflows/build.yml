@@ -9,7 +9,10 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write   # 允许创建 Release 并上传 deb
     strategy:
+      fail-fast: false  # 一个方案失败不连坐取消另一个
       matrix:
         scheme: [rootless, roothide]
     runs-on: macos-14
@@ -46,7 +49,7 @@ jobs:
         run: |
           export PATH="$(brew --prefix make)/bin:$PATH"
           gmake clean || true
-          gmake package THEOS_PACKAGE_SCHEME=${{ matrix.scheme }}
+          gmake package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=${{ matrix.scheme }}
 
       - name: Collect artifacts
         run: |
