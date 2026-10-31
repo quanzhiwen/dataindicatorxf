@@ -45,6 +45,18 @@ jobs:
             fi
           fi
 
+      - name: Build Preferences stub framework (link-time only)
+        run: |
+          mkdir -p "$THEOS/CrapFrameworks/Preferences.framework"
+          SDK=$(xcrun --sdk iphoneos --show-sdk-path)
+          for arch in arm64 arm64e; do
+            clang -target $arch-apple-ios16.0 -isysroot "$SDK" -dynamiclib \
+              -install_name /System/Library/PrivateFrameworks/Preferences.framework/Preferences \
+              tools/prefs-stub.c -o /tmp/prefs-$arch.dylib
+          done
+          lipo -create /tmp/prefs-arm64.dylib /tmp/prefs-arm64e.dylib \
+            -output "$THEOS/CrapFrameworks/Preferences.framework/Preferences"
+
       - name: Build tweak (${{ matrix.scheme }})
         run: |
           export PATH="$(brew --prefix make)/bin:$PATH"
