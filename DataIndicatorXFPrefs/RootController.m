@@ -2,6 +2,11 @@
 #import "Prefs.h"
 #import <notify.h>
 
+// theos 自带的 PSListController.h 未声明以下方法（真实框架中存在），补充声明
+@interface PSListController (DIXFMissing)
+- (void)setValue:(id)value forSpecifier:(PSSpecifier *)specifier;
+@end
+
 // 与 Tweak.x 保持一致
 static NSString *const kDIXFDomain   = @"cn.xiumaos.ios";
 static NSString *const kDIXFRulesKey = @"rules";
