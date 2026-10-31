@@ -1,0 +1,14 @@
+{
+	title = "DataIndicatorXF";
+	entry = {
+		bundle = "DataIndicatorXFPrefs";
+		cell = {
+			detail = "DataIndicatorXFPrefs";
+			title = "DataIndicatorXF";
+		};
+		defaults = "cn.xiumaos.ios";
+	};
+	preferenceLoaderVersion = 2;
+	operation = insert;
+	section = "General";
+}

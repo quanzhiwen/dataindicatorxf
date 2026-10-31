@@ -1,0 +1,62 @@
+name: Build deb packages
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        scheme: [rootless, roothide]
+    runs-on: macos-14
+    env:
+      THEOS: ${{ github.workspace }}/theos
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: brew install ldid dpkg xz make
+
+      - name: Cache theos
+        uses: actions/cache@v4
+        with:
+          path: theos
+          key: theos-v1-${{ runner.arch }}
+          restore-keys: |
+            theos-v1-${{ runner.arch }}-
+
+      - name: Setup theos
+        run: |
+          if [ ! -d theos/makefiles ]; then
+            rm -rf theos
+            git clone --recursive https://github.com/theos/theos.git theos
+          fi
+
+      - name: Build tweak (${{ matrix.scheme }})
+        run: |
+          export PATH="$(brew --prefix make)/bin:$PATH"
+          gmake clean || true
+          gmake package THEOS_PACKAGE_SCHEME=${{ matrix.scheme }}
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p out/${{ matrix.scheme }}
+          cp packages/*.deb out/${{ matrix.scheme }}/
+          ls -lh out/${{ matrix.scheme }}
+
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DataIndicatorXF-${{ matrix.scheme }}
+          path: out/${{ matrix.scheme }}/*.deb
+
+      - name: Upload to release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/${{ matrix.scheme }}/*.deb

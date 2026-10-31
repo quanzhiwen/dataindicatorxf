@@ -1,0 +1,10 @@
+Package: cn.xiumaos.ios
+Name: DataIndicatorXF
+Version: 1.1.0
+Architecture: ${ARCH}
+Description: 按规则映射修改状态栏数据标识（3G→4G、4G→5G 等，规则条数动态可增删），支持 iOS 16-18 rootless/roothide
+Maintainer: sjbs
+Author: sjbs
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader
+Tags: compatible_min::ios16.0
