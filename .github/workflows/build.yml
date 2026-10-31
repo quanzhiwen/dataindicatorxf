@@ -26,15 +26,20 @@ jobs:
         uses: actions/cache@v4
         with:
           path: theos
-          key: theos-v1-${{ runner.arch }}
+          key: theos-v2-${{ matrix.scheme }}-${{ runner.arch }}
           restore-keys: |
-            theos-v1-${{ runner.arch }}-
+            theos-v2-${{ matrix.scheme }}-${{ runner.arch }}-
 
       - name: Setup theos
         run: |
           if [ ! -d theos/makefiles ]; then
             rm -rf theos
-            git clone --recursive https://github.com/theos/theos.git theos
+            if [ "${{ matrix.scheme }}" = "roothide" ]; then
+              # roothide 方案需要 RootHide 官方 theos fork
+              git clone --recursive https://github.com/roothide/theos.git theos
+            else
+              git clone --recursive https://github.com/theos/theos.git theos
+            fi
           fi
 
       - name: Build tweak (${{ matrix.scheme }})
