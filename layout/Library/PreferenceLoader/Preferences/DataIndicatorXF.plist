@@ -1,16 +1,29 @@
-{
-	title = "DataIndicatorXF";
-	entry = {
-		bundle = "DataIndicatorXFPrefs";
-		cell = {
-			detail = "RootController";
-			title = "DataIndicatorXF";
-		};
-		defaults = "cn.xiumaos.ios";
-	};
-	preferenceLoaderVersion = 2;
-	operation = insert;
-	position = end;
-	section = "General";
-	isRelevant = "return YES;";
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>title</key>
+	<string>DataIndicatorXF</string>
+	<key>entry</key>
+	<dict>
+		<key>bundle</key>
+		<string>DataIndicatorXFPrefs</string>
+		<key>cell</key>
+		<string>PSLinkCell</string>
+		<key>detail</key>
+		<string>DIXFRootController</string>
+		<key>defaults</key>
+		<string>cn.xiumaos.ios</string>
+	</dict>
+	<key>preferenceLoaderVersion</key>
+	<integer>2</integer>
+	<key>operation</key>
+	<string>insert</string>
+	<key>position</key>
+	<string>end</string>
+	<key>section</key>
+	<string>General</string>
+	<key>isRelevant</key>
+	<string>return YES;</string>
+</dict>
+</plist>

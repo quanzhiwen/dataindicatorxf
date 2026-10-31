@@ -12,7 +12,7 @@ static NSString *const kDIXFDomain   = @"cn.xiumaos.ios";
 static NSString *const kDIXFRulesKey = @"rules";
 static const char *kDIXFNotify       = "cn.xiumaos.ios.changed";
 
-@implementation RootController
+@implementation DIXFRootController
 
 #pragma mark - 规则数组存储（动态条数，无上限）
 

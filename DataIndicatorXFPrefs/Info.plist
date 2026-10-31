@@ -23,7 +23,7 @@
 		<key>bundleVersion</key>
 		<integer>1</integer>
 		<key>class</key>
-		<string>RootController</string>
+		<string>DIXFRootController</string>
 		<key>name</key>
 		<string>DataIndicatorXFPrefs</string>
 	</dict>
