@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>DataIndicatorXFPrefs</string>
+	<key>CFBundleIdentifier</key>
+	<string>cn.xiumaos.dataindicatorxf-prefs</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>DataIndicatorXFPrefs</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>Bundle</key>
+	<dict>
+		<key>bundleVersion</key>
+		<integer>1</integer>
+		<key>class</key>
+		<string>RootController</string>
+		<key>name</key>
+		<string>DataIndicatorXFPrefs</string>
+	</dict>
+	<key>Settings</key>
+	<dict>
+		<key>title</key>
+		<string>DataIndicatorXF</string>
+	</dict>
+</dict>
+</plist>
